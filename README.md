@@ -35,5 +35,55 @@ The dataset is divided into a training set of 176,020 examples and a validation 
 
 
 
+
+
+In thissection, we evaluate the propose architecture for the 
+histopathologic cancer detection. The architecture of the 
+model is shown in the table below (CN - Conv2D layer, BN -
+Batch normalization layer, ACT - Activation layer, MP - Max 
+Pooling layer, DP - Dropout layer, F - Flatten layer, D - Dense 
+layer)
+
+![image](https://user-images.githubusercontent.com/51163007/122677490-19d2a400-d200-11eb-9b1e-177cc56fa216.png)
+
+Total params: 4,284,673
+Trainable params: 4,281,473
+Non-Trainable params: 3,200
+We have used the above-mentioned architecture to train 
+the model. We have introduced Batch Normalization before 
+activation layer to address the problem of internal covariance 
+shift. The Internal covariance problem occurs when the input 
+distribution of the model keeps fluctuating. Batch 
+Normalization layer helps to control the mean and variance of 
+the output and does not let the model to over-specialize in one 
+region of the input distribution. Using Batch Normalization, 
+we reduce the chances of overfitting of the training example. 
+The dropout layer is added to further reduce the overfitting as it is also a regularization technique [7]. It is a technique in 
+which randomly selected neurons are ignored/made dead 
+during the training. By using the dropout layer in the neural 
+network, the network becomes less sensitive to specific 
+weights of neurons. This results in better generalization and 
+reducesthe chances of overfitting of training data. The rate for 
+dropout is set at 0.2 i.e. dropping 20% of the nodes randomly. 
+The dense layer of 256 neurons is added as a FC layer. The 
+dense layer is a FC layer which each neuron is connected to 
+every neuron of the next layer. The final dense layer has only 
+one neuron. The activation function used for the training of 
+the model are RELU and sigmoid. RELU is used in the hidden 
+layers, while sigmoid activation function is used as an 
+activation function of the output layer.
+The model was trained for 10 epochs on GPU enabled 
+Kaggle kernel with 13 Gigabytes RAM and Nvidia K80 
+Graphical Processing Unit (GPU). The training and validation 
+metrices obtained for each epoch are shown in the table below.
+
+![image](https://user-images.githubusercontent.com/51163007/122677519-4090da80-d200-11eb-9a1c-e3e2dc540c90.png)
+
+The loss metrics used is Binary cross entropy. The 
+optimizer used is Adam optimizer with learning rate of 0.001. 
+The test data was used to validate the accuracy of the model. 
+The accuracy achieved by the neural network model on the 
+testing data is 95.34%.
+
 I propose a novel convolution neural network architecture for detection of metastatic cancer tissues on histopathologic images of lymph nodes. We exploited various machine learning techniques in order to increase the accuracy as well as the computation efficiency of the neural network. The experimental results gave a very good accuracy for the testing example. One direction of future work could be implementation of Rotation invariant CNN for detection of the presence of lymph node metastasis.
 
